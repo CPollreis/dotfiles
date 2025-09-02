@@ -26,15 +26,16 @@ brew install armadillo
 brew install wget
 brew install jq
 brew install ripgrep
-brew install bear
+#brew install bear (using obisidian)
 brew install mas
 brew install gh
 brew install ifstat
 brew install switchaudio-osx
-brew install skhd
+#brew install skhd (aerospace replaces this, too confusing to mix hotkey daemons)
 brew install sketchybar
 brew install borders
-brew install yabai
+#brew install yabai (using aerospace)
+#brew install aerospace (already installed)
 
 ### Science
 brew install mactex
@@ -53,25 +54,26 @@ brew install zoxide
 ### Nice to have
 brew install lulu
 brew install btop
-brew install svim
+#brew install svim
 brew install lazygit
 brew install wireguard-go
 brew install dooit
 
 ### Custom HEAD only forks
-brew install fnnn --head # nnn fork (changed colors, keymappings)
+#brew install fnnn --head # nnn fork (changed colors, keymappings)
 
 ## Casks
 echo "Installing Brew Casks..."
 ### Terminals & Browsers
 brew install --cask alacritty
 brew install --cask kitty
-brew install --cask orion
+brew install --cask zen
+#brew install --cask orion
 
 ### Office
 brew install --cask inkscape
-brew install --cask libreoffice
-brew install --cask zoom
+#brew install --cask libreoffice (cool alternative)
+#brew install --cask zoom (already have)
 brew install --cask meetingbar
 brew install --cask skim
 brew install --cask vlc
@@ -83,8 +85,8 @@ brew install --cask cutter
 brew install --cask sloth
 
 ### Nice to have
-brew install --cask alfred
-brew install --cask spotify
+#brew install --cask alfred
+#brew install --cask spotify (already installed)
 
 ### Fonts
 brew install --cask sf-symbols
@@ -108,8 +110,8 @@ defaults write com.apple.spaces spans-displays -bool false
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock "mru-spaces" -bool "false"
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+#defaults write com.apple.LaunchServices LSQuarantine -bool false (to remove file sys pop-ups)
+#defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -140,11 +142,11 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 defaults write -g NSWindowShouldDragOnGesture YES
 
 ## Fix for MX Master 3S
-sudo defaults write /Library/Preferences/com.apple.airport.bt.plist bluetoothCoexMgmt Hybrid
+#sudo defaults write /Library/Preferences/com.apple.airport.bt.plist bluetoothCoexMgmt Hybrid
 
 # Copying and checking out configuration files
 echo "Planting Configuration Files..."
-[ ! -d "$HOME/dotfiles" ] && git clone --bare git@github.com:FelixKratz/dotfiles.git $HOME/dotfiles
+[ ! -d "$HOME/dotfiles" ] && git clone --bare git@github.com:CPollreis/dotfiles.git $HOME/dotfiles
 git --git-dir=$HOME/dotfiles/ --work-tree=$HOME checkout master
 
 # Installing Fonts
@@ -182,13 +184,13 @@ pip install sklearn
 
 # Start Services
 echo "Starting Services (grant permissions)..."
-brew services start skhd
-brew services start fyabai
+#brew services start skhd
+#brew services start fyabai
 brew services start sketchybar
 brew services start borders
-brew services start svim
+#brew services start svim
 
 csrutil status
 echo "(optional) Disable SIP for advanced yabai features."
-echo "(optional) Add sudoer manually:\n '$(whoami) ALL = (root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | awk "{print \$1;}") $(which yabai) --load-sa' to '/private/etc/sudoers.d/yabai'"
+#echo "(optional) Add sudoer manually:\n '$(whoami) ALL = (root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | awk "{print \$1;}") $(which yabai) --load-sa' to '/private/etc/sudoers.d/yabai'"
 echo "Installation complete...\n"
